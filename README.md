@@ -1,6 +1,8 @@
 # BastionSCR
 A security bot for your discord server, and still need improvement for now the function works 😁💖
 
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/14ab1719-5849-4378-850f-452981820703" />
+
 ````md
 # 🛡️ BastionSecurityBot
 
@@ -179,6 +181,5 @@ Made with ❤️ by <strong>BastionSecurityBot</strong>
 🌐 https://bastiondiscordbot.netlify.app/
 
 🤖 https://discord.com/oauth2/authorize?client_id=1523973601097814150&permissions=8&integration_type=0&scope=bot+applications.commands
-
 </p>
 ````
