@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bastion — Discord Moderation &amp; Logging Bot</title>
+  <meta name="description" content="Bastion: Discord bot for anti-spam, anti-phishing, honeypot trap channel, and automatic server logging. Threats stop at the gate, not in your chat." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0d0f15;--panel:#12151d;--card:#141821;--border:#242a36;
+      --text:#e8eaef;--muted:#8b92a2;--accent:#eaa13a;--accent-2:#f2b04a;--red:#d1483f;
+      --display:'Anton',sans-serif;--head:'Oswald',sans-serif;--body:'Inter',sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.65;
+      background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+      background-size:44px 44px;overflow-x:hidden;
+    }
+    .container{max-width:1120px;margin:0 auto;padding:0 32px}
+    a{color:inherit;text-decoration:none}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,15,21,.72);border-bottom:1px solid rgba(255,255,255,.04)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+    .brand{display:flex;align-items:center;gap:12px;font-family:var(--head);font-weight:700;letter-spacing:3px;font-size:20px}
+    .brand::before{content:"";width:4px;height:24px;background:var(--accent);display:inline-block}
+    .nav-right{display:flex;align-items:center;gap:16px}
+    .lang-switch{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+    .lang-switch button{background:transparent;border:none;color:var(--muted);font-family:var(--head);font-weight:600;font-size:13px;letter-spacing:1px;padding:7px 14px;cursor:pointer;transition:.15s}
+    .lang-switch button.active{background:var(--accent);color:#141821}
+    .btn-nav{border:1px solid var(--border);border-radius:6px;padding:9px 18px;font-weight:600;font-size:14px;transition:.15s}
+    .btn-nav:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* HERO */
+    .hero{padding:90px 0 80px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+    .eyebrow{color:var(--accent);font-family:var(--head);font-weight:600;letter-spacing:4px;font-size:13px;text-transform:uppercase;margin-bottom:22px}
+    .display{font-family:var(--display);font-size:clamp(46px,6vw,82px);line-height:.96;letter-spacing:1px;text-transform:uppercase}
+    .display .accent{color:var(--accent)}
+    .hero p.lead{color:var(--muted);font-size:17px;max-width:480px;margin:26px 0 34px}
+    .cta-row{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+    .btn-primary{
+      background:var(--accent);color:#141821;font-family:var(--head);font-weight:700;letter-spacing:1.5px;
+      text-transform:uppercase;font-size:15px;padding:16px 30px;border:none;cursor:pointer;
+      clip-path:polygon(0 0,100% 0,100% 72%,94% 100%,0 100%);transition:.18s;
+    }
+    .btn-primary:hover{background:var(--accent-2);transform:translateY(-2px)}
+    .link-scroll{color:var(--text);font-weight:500;border-bottom:1px solid var(--border);padding-bottom:3px;transition:.15s}
+    .link-scroll:hover{color:var(--accent);border-color:var(--accent)}
+
+    /* SECTIONS */
+    section.block{padding:76px 0;border-top:1px solid rgba(255,255,255,.04)}
+    .section-label{color:var(--red);font-family:var(--head);font-weight:600;letter-spacing:4px;font-size:13px;text-transform:uppercase;margin-bottom:16px}
+    .section-title{font-family:var(--display);font-size:clamp(30px,4vw,46px);line-height:1;letter-spacing:1px;text-transform:uppercase}
+    .section-desc{color:var(--muted);font-size:16px;max-width:560px;margin-top:18px}
+
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px}
+    .card{background:var(--card);border:1px solid var(--border);padding:30px;position:relative;overflow:hidden}
+    .card::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--accent);opacity:.5}
+    .card .tag{font-family:var(--head);font-weight:600;letter-spacing:2px;font-size:12px;text-transform:uppercase;color:var(--red)}
+    .card h3{font-family:var(--head);font-weight:700;letter-spacing:.5px;font-size:22px;text-transform:uppercase;margin:10px 0 12px}
+    .card p{color:var(--muted);font-size:15px}
+
+    .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:44px}
+    .step{background:var(--panel);border:1px solid var(--border);padding:26px}
+    .step .n{font-family:var(--display);font-size:40px;color:var(--accent);line-height:1}
+    .step h4{font-family:var(--head);font-weight:600;letter-spacing:.5px;font-size:17px;text-transform:uppercase;margin:8px 0 8px}
+    .step p{color:var(--muted);font-size:14px}
+    .step code{background:#0d0f15;border:1px solid var(--border);padding:1px 7px;border-radius:4px;font-size:13px;color:var(--accent)}
+
+    .perms-list{list-style:none;margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+    .perms-list li{padding-left:24px;position:relative;color:var(--muted);font-size:15px}
+    .perms-list li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+    .perms-list li strong{color:var(--text)}
+    .hint{color:var(--muted);font-size:14px;margin-top:22px;padding:14px 18px;border-left:3px solid var(--accent);background:var(--panel)}
+
+    .perm-note{color:var(--muted);font-size:13px;max-width:520px;margin-top:26px;line-height:1.6}
+
+    /* FOOTER */
+    footer{border-top:1px solid rgba(255,255,255,.05);padding:44px 0;text-align:center}
+    footer .brand{justify-content:center;margin-bottom:14px}
+    footer a{color:var(--accent);margin:0 10px}
+    footer a:hover{text-decoration:underline}
+    footer .copy{color:var(--muted);font-size:13px;margin-top:16px}
+
+    /* CASTLE */
+    .castle-wrap{display:flex;justify-content:center}
+    .castle{width:100%;max-width:340px;animation:float 6s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+    .castle .window{animation:glow 3s ease-in-out infinite}
+    .castle .window.b{animation-delay:1.5s}
+    @keyframes glow{0%,100%{opacity:.55}50%{opacity:1}}
+
+    /* REVEAL ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+    .reveal.from-left{transform:translateX(-50px)}
+    .reveal.from-right{transform:translateX(50px)}
+    .reveal.in{opacity:1;transform:none}
+    .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.castle{animation:none}}
+
+    html.lang-en [data-lang="id"],html.lang-id [data-lang="en"]{display:none!important}
+    @media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:36px}.castle-wrap{order:-1}.grid{grid-template-columns:1fr}.container{padding:0 22px}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <div class="brand">BASTION</div>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button data-set="id">ID</button>
+          <button data-set="en">EN</button>
+        </div>
+        <a class="btn-nav" href="https://discord.com/oauth2/authorize?client_id=1523973601097814150&permissions=8&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">
+          <span data-lang="en">Invite Bot</span><span data-lang="id">Undang Bot</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow reveal from-left"><span data-lang="en">Discord Security &amp; Logging Bot</span><span data-lang="id">Bot Keamanan &amp; Logging Discord</span></p>
+        <h1 class="display reveal from-left d1" data-lang="en">Threats stop<br>at the gate, <span class="accent">not in your chat.</span></h1>
+        <h1 class="display reveal from-left d1" data-lang="id">Ancaman berhenti<br>di gerbang, <span class="accent">bukan di chat-mu.</span></h1>
+        <p class="lead reveal from-left d2" data-lang="en">Bastion watches every message, member, and voice channel in your server — then closes the gate before spam and phishing get through. Set it up once and every defense runs on its own.</p>
+        <p class="lead reveal from-left d2" data-lang="id">Bastion mengawasi setiap pesan, member, dan voice channel di servermu — lalu menutup gerbang sebelum spam dan phishing masuk. Cukup atur sekali, semua pertahanan berjalan otomatis.</p>
+        <div class="cta-row reveal from-left d3">
+          <a class="btn-primary" href="https://discord.com/oauth2/authorize?client_id=1523973601097814150&permissions=8&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener">
+            <span data-lang="en">Invite Bastion</span><span data-lang="id">Undang Bastion</span>
+          </a>
+          <a class="link-scroll" href="#features"><span data-lang="en">See all features ↓</span><span data-lang="id">Lihat semua fitur ↓</span></a>
+        </div>
+      </div>
+      <div class="castle-wrap reveal from-right d2">
+        <svg class="castle" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="18" y="60" width="264" height="230" rx="6" fill="#1b2029"/>
+          <g fill="#12151d">
+            <rect x="18" y="40" width="40" height="30"/><rect x="70" y="40" width="40" height="30"/>
+            <rect x="122" y="40" width="40" height="30"/><rect x="174" y="40" width="40" height="30"/>
+            <rect x="226" y="40" width="40" height="30"/>
+          </g>
+          <path d="M90 290 V150 a60 60 0 0 1 120 0 V290 Z" fill="#12151d"/>
+          <rect x="147" y="92" width="6" height="198" fill="#0d0f15"/>
+          <g stroke="#2a303c" stroke-width="3">
+            <line x1="118" y1="150" x2="118" y2="280"/><line x1="132" y1="135" x2="132" y2="280"/>
+            <line x1="168" y1="135" x2="168" y2="280"/><line x1="182" y1="150" x2="182" y2="280"/>
+          </g>
+          <circle class="window" cx="70" cy="92" r="8" fill="#eaa13a"/>
+          <circle class="window b" cx="230" cy="92" r="8" fill="#eaa13a"/>
+          <rect x="140" y="195" width="20" height="34" rx="6" fill="#eaa13a"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <section class="block" id="features">
+    <div class="container">
+      <p class="section-label reveal"><span data-lang="en">Pillars of Defense</span><span data-lang="id">Pilar Pertahanan</span></p>
+      <h2 class="section-title reveal d1" data-lang="en">Four pillars keeping the gate standing</h2>
+      <h2 class="section-title reveal d1" data-lang="id">Empat pilar yang menjaga gerbang tetap kokoh</h2>
+      <p class="section-desc reveal d2" data-lang="en">Every Bastion feature runs on its own in the background. No cluttered dashboard, no manual config.</p>
+      <p class="section-desc reveal d2" data-lang="id">Setiap fitur Bastion berjalan sendiri di latar belakang. Tanpa dashboard rumit, tanpa konfigurasi manual.</p>
+      <div class="grid">
+        <div class="card reveal from-left d1">
+          <span class="tag">Anti-Spam</span>
+          <h3 data-lang="en">Slows down message floods</h3><h3 data-lang="id">Meredam banjir pesan</h3>
+          <p data-lang="en">Detects flooding and repeated messages, times out the offender, and clears their spam automatically.</p>
+          <p data-lang="id">Mendeteksi flooding &amp; pesan berulang, men-timeout pelaku, dan membersihkan spam-nya otomatis.</p>
+        </div>
+        <div class="card reveal from-right d1">
+          <span class="tag">Anti-Phishing</span>
+          <h3 data-lang="en">Catches compromised accounts</h3><h3 data-lang="id">Menangkap akun kena hack</h3>
+          <p data-lang="en">Flags suspicious links and scam keywords, kicks the account, and purges its messages across every channel.</p>
+          <p data-lang="id">Menandai link mencurigakan &amp; kata kunci scam, kick akunnya, dan menyapu pesannya di seluruh channel.</p>
+        </div>
+        <div class="card reveal from-left d2">
+          <span class="tag">Trap Channel</span>
+          <h3 data-lang="en">A honeypot for scammers</h3><h3 data-lang="id">Umpan untuk scammer</h3>
+          <p data-lang="en">Anyone who posts in the trap channel is instantly kicked and every message they sent is wiped.</p>
+          <p data-lang="id">Siapa pun yang kirim pesan di trap channel langsung di-kick dan semua pesannya dihapus.</p>
+        </div>
+        <div class="card reveal from-right d2">
+          <span class="tag">Logging</span>
+          <h3 data-lang="en">Full audit trail</h3><h3 data-lang="id">Jejak audit lengkap</h3>
+          <p data-lang="en">Records joins/leaves, edits/deletes, role &amp; channel changes, bans, and voice activity to a log channel.</p>
+          <p data-lang="id">Mencatat join/leave, edit/hapus, perubahan role &amp; channel, ban, dan aktivitas voice ke channel log.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <p class="section-label reveal"><span data-lang="en">Deploy in Minutes</span><span data-lang="id">Aktif dalam Menit</span></p>
+      <h2 class="section-title reveal d1" data-lang="en">Raise the walls in three steps</h2>
+      <h2 class="section-title reveal d1" data-lang="id">Bangun benteng dalam tiga langkah</h2>
+      <div class="steps">
+        <div class="step reveal d1"><div class="n">1</div><h4 data-lang="en">Invite</h4><h4 data-lang="id">Undang</h4><p data-lang="en">Add Bastion to your server with the button above.</p><p data-lang="id">Tambahkan Bastion ke servermu lewat tombol di atas.</p></div>
+        <div class="step reveal d2"><div class="n">2</div><h4 data-lang="en">Setup</h4><h4 data-lang="id">Setup</h4><p data-lang="en">Run <code>/setup</code> to create a log channel and arm anti-spam/phishing.</p><p data-lang="id">Jalankan <code>/setup</code> untuk buat channel log &amp; aktifkan anti-spam/phishing.</p></div>
+        <div class="step reveal d3"><div class="n">3</div><h4 data-lang="en">Trap &amp; Watch</h4><h4 data-lang="id">Trap &amp; Pantau</h4><p data-lang="en">Optionally run <code>/trap</code>, then check <code>/status</code> anytime.</p><p data-lang="id">Opsional jalankan <code>/trap</code>, lalu cek <code>/status</code> kapan saja.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <p class="section-label reveal"><span data-lang="en">Access</span><span data-lang="id">Akses</span></p>
+      <h2 class="section-title reveal d1" data-lang="en">Permissions it needs</h2>
+      <h2 class="section-title reveal d1" data-lang="id">Izin yang dibutuhkan</h2>
+      <ul class="perms-list reveal d2" data-lang="en">
+        <li><strong>Manage Channels</strong> — create log &amp; trap channels.</li>
+        <li><strong>Manage Messages</strong> — delete spam/phishing.</li>
+        <li><strong>Kick Members</strong> — remove compromised accounts.</li>
+        <li><strong>Moderate Members</strong> — timeout spam offenders.</li>
+        <li><strong>View Audit Log</strong> — record moderator actions.</li>
+      </ul>
+      <ul class="perms-list reveal d2" data-lang="id">
+        <li><strong>Manage Channels</strong> — membuat channel log &amp; trap.</li>
+        <li><strong>Manage Messages</strong> — menghapus spam/phishing.</li>
+        <li><strong>Kick Members</strong> — menendang akun kena hack.</li>
+        <li><strong>Moderate Members</strong> — timeout pelaku spam.</li>
+        <li><strong>View Audit Log</strong> — mencatat aksi moderator.</li>
+      </ul>
+      <p class="hint reveal d3" data-lang="en">For kicks to work, place Bastion's role <strong>above</strong> the members being moderated.</p>
+      <p class="hint reveal d3" data-lang="id">Agar kick berjalan, letakkan role Bastion <strong>di atas</strong> role member yang dimoderasi.</p>
+      <p class="perm-note reveal" data-lang="en">The invite link requests <strong>Administrator</strong>. Bastion only uses the permissions listed above — you can reduce them via role settings.</p>
+      <p class="perm-note reveal" data-lang="id">Link undangan meminta izin <strong>Administrator</strong>. Bastion hanya memakai izin di atas — kamu bisa menguranginya lewat pengaturan role.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="brand">BASTION</div>
+      <div>
+        <a href="https://tosbastionbot.netlify.app/" target="_blank" rel="noopener">Terms of Service</a><span style="color:var(--muted)">·</span><a href="https://privacyurlbastion.netlify.app/" target="_blank" rel="noopener">Privacy Policy</a>
+      </div>
+      <p class="copy" data-lang="en">Contact <strong>f0reest</strong> on Discord · © 2026 Bastion</p>
+      <p class="copy" data-lang="id">Kontak <strong>f0reest</strong> di Discord · © 2026 Bastion</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var K="bastion-lang",r=document.documentElement;
+      function setLang(l){r.classList.remove("lang-en","lang-id");r.classList.add("lang-"+l);r.setAttribute("lang",l);var b=document.querySelectorAll(".lang-switch button");for(var i=0;i<b.length;i++)b[i].classList.toggle("active",b[i].dataset.set===l);try{localStorage.setItem(K,l)}catch(e){}}
+      var s="en";try{s=localStorage.getItem(K)||"en"}catch(e){}setLang(s);
+      document.addEventListener("click",function(e){var b=e.target.closest?e.target.closest(".lang-switch button"):null;if(b&&b.dataset.set)setLang(b.dataset.set)});
+      var io=new IntersectionObserver(function(ent){ent.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.12});
+      document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+    })();
+  </script>
+</body>
+</html>

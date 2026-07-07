@@ -1,0 +1,13 @@
+{
+  "name": "f0reestbot",
+  "version": "1.0.0",
+  "description": "Bot Discord untuk logging + anti-spam/phishing (struktur modular)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5"
+  }
+}

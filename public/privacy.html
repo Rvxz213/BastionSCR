@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Bastion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0d0f15;--panel:#12151d;--surface-2:#1b2029;--text:#e8eaef;--muted:#8b92a2;--accent:#eaa13a;--border:#242a36;--display:'Anton',sans-serif;--head:'Oswald',sans-serif;--body:'Inter',sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.7;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:44px 44px}
+    code{background:#0d0f15;border:1px solid var(--border);padding:1px 8px;border-radius:5px;font-family:"SF Mono",Consolas,Monaco,monospace;font-size:14px;color:var(--accent)}
+    nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,15,21,.72);border-bottom:1px solid rgba(255,255,255,.04)}
+    .nav-inner{max-width:760px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:12px;font-family:var(--head);font-weight:700;letter-spacing:3px;font-size:18px}
+    .brand::before{content:"";width:4px;height:22px;background:var(--accent);display:inline-block}
+    .lang-switch{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+    .lang-switch button{background:transparent;border:none;color:var(--muted);font-family:var(--head);font-weight:600;font-size:13px;letter-spacing:1px;padding:6px 13px;cursor:pointer;transition:.15s}
+    .lang-switch button.active{background:var(--accent);color:#141821}
+    html.lang-en [data-lang="id"],html.lang-id [data-lang="en"]{display:none!important}
+    .legal{max-width:760px;margin:0 auto;padding:56px 20px}
+    .legal h1{font-family:var(--display);font-size:44px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+    .legal .updated{color:var(--muted);font-size:14px;margin-bottom:32px}
+    .legal h2{font-family:var(--head);font-weight:600;letter-spacing:.5px;font-size:21px;text-transform:uppercase;margin:34px 0 10px}
+    .legal p,.legal li{color:#cfd3dd}
+    .legal ul{padding-left:22px;margin:8px 0}
+    .legal li{margin-bottom:8px}
+    .legal a{color:var(--accent)}
+    .back-link{display:inline-block;margin-bottom:24px;color:var(--accent);text-decoration:none;font-weight:500}
+    .back-link:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">BASTION</div>
+      <div class="lang-switch">
+        <button data-set="id">ID</button>
+        <button data-set="en">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <article class="legal" data-lang="en">
+    <a class="back-link" href="https://bastiondiscordbot.netlify.app/">← Back</a>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: July 7, 2026</p>
+
+    <p>
+      This Privacy Policy explains what data <strong>Bastion</strong> ("the Bot") collects and processes
+      when used in your Discord server.
+    </p>
+
+    <h2>1. Data We Store</h2>
+    <p>The Bot stores minimal configuration data required for its features to work:</p>
+    <ul>
+      <li><strong>Server ID (guild ID)</strong></li>
+      <li><strong>Log channel ID</strong> you set via <code>/setup</code></li>
+      <li><strong>Trap channel ID</strong> you set via <code>/trap</code></li>
+    </ul>
+    <p>This data is stored in a local configuration file (<code>settings.json</code>) on the server where the Bot runs.</p>
+
+    <h2>2. Data Processed Temporarily</h2>
+    <ul>
+      <li>
+        <strong>Message content &amp; attachments</strong> — processed in real time to detect spam, phishing,
+        and trap channel violations. For logging purposes, a message summary (including text content) may be
+        sent to the log channel you designate within your own server.
+      </li>
+      <li>
+        <strong>Message timestamps &amp; user IDs</strong> — held temporarily in memory (not a permanent
+        database) to detect flooding. This data is automatically cleared when the Bot restarts.
+      </li>
+    </ul>
+
+    <h2>3. Data We Do NOT Collect</h2>
+    <ul>
+      <li>We do not sell or share your data with third parties.</li>
+      <li>We do not store a full history of user messages in an external database.</li>
+      <li>We do not collect personal data beyond public Discord information (username, ID, tag).</li>
+    </ul>
+
+    <h2>4. Purpose of Processing</h2>
+    <p>
+      All data is processed solely to run moderation and logging functions: detecting spam/phishing,
+      managing the trap channel, and logging activity to a log channel that you control.
+    </p>
+
+    <h2>5. Storage &amp; Retention</h2>
+    <p>
+      Configuration data is stored as long as the Bot is in your server. Logs sent to your log channel
+      are fully under your control and subject to your own server settings.
+    </p>
+
+    <h2>6. Data Deletion</h2>
+    <p>
+      You can delete all configuration data related to your server by <strong>removing (kicking) the Bot
+      from your server</strong>. For manual deletion requests, contact <strong>f0reest</strong> on Discord.
+    </p>
+
+    <h2>7. Third-Party Services</h2>
+    <p>
+      The Bot runs on the Discord platform and is subject to the
+      <a href="https://discord.com/privacy" target="_blank" rel="noopener">Discord Privacy Policy</a>.
+    </p>
+
+    <h2>8. Changes to This Policy</h2>
+    <p>This Privacy Policy may be updated at any time. Changes take effect once published on this page.</p>
+
+    <h2>9. Contact</h2>
+    <p>For questions or data-related requests, contact <strong>f0reest</strong> on Discord.</p>
+
+    <p style="margin-top:32px;"><a href="https://tosbastionbot.netlify.app/" target="_blank" rel="noopener">View Terms of Service →</a></p>
+  </article>
+
+  <article class="legal" data-lang="id">
+    <a class="back-link" href="https://bastiondiscordbot.netlify.app/">← Kembali</a>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Terakhir diperbarui: 7 Juli 2026</p>
+
+    <p>
+      Kebijakan Privasi ini menjelaskan data apa yang dikumpulkan dan diproses oleh
+      <strong>Bastion</strong> ("Bot") saat digunakan di server Discord Anda.
+    </p>
+
+    <h2>1. Data yang Kami Simpan</h2>
+    <p>Bot menyimpan data konfigurasi minimal yang diperlukan agar fitur berfungsi:</p>
+    <ul>
+      <li><strong>ID Server (guild ID)</strong></li>
+      <li><strong>ID channel log</strong> yang Anda tetapkan lewat <code>/setup</code></li>
+      <li><strong>ID trap channel</strong> yang Anda tetapkan lewat <code>/trap</code></li>
+    </ul>
+    <p>Data ini disimpan dalam file konfigurasi lokal (<code>settings.json</code>) di server tempat Bot dijalankan.</p>
+
+    <h2>2. Data yang Diproses Sementara</h2>
+    <ul>
+      <li>
+        <strong>Isi pesan &amp; lampiran</strong> — diproses secara real-time untuk mendeteksi spam,
+        phishing, dan pelanggaran trap channel. Untuk keperluan logging, ringkasan pesan (termasuk
+        isi teks) dapat dikirim ke channel log yang Anda tentukan di dalam server Anda sendiri.
+      </li>
+      <li>
+        <strong>Timestamp pesan &amp; ID pengguna</strong> — disimpan sementara di memori (bukan
+        database permanen) untuk mendeteksi flooding. Data ini otomatis hilang saat Bot dimulai ulang.
+      </li>
+    </ul>
+
+    <h2>3. Data yang TIDAK Kami Kumpulkan</h2>
+    <ul>
+      <li>Kami tidak menjual atau membagikan data Anda ke pihak ketiga.</li>
+      <li>Kami tidak menyimpan riwayat lengkap pesan pengguna dalam database eksternal.</li>
+      <li>Kami tidak mengumpulkan data pribadi di luar informasi publik Discord (username, ID, tag).</li>
+    </ul>
+
+    <h2>4. Tujuan Pemrosesan</h2>
+    <p>
+      Semua data diproses semata-mata untuk menjalankan fungsi moderasi dan logging: mendeteksi
+      spam/phishing, mengelola trap channel, dan mencatat aktivitas ke channel log yang Anda kontrol.
+    </p>
+
+    <h2>5. Penyimpanan &amp; Retensi</h2>
+    <p>
+      Data konfigurasi disimpan selama Bot berada di server Anda. Log yang dikirim ke channel log
+      Anda sepenuhnya berada di bawah kendali Anda dan tunduk pada pengaturan server Anda sendiri.
+    </p>
+
+    <h2>6. Penghapusan Data</h2>
+    <p>
+      Anda dapat menghapus semua data konfigurasi yang berkaitan dengan server Anda dengan
+      <strong>mengeluarkan (kick) Bot dari server</strong>. Untuk permintaan penghapusan manual,
+      hubungi <strong>f0reest</strong> di Discord.
+    </p>
+
+    <h2>7. Layanan Pihak Ketiga</h2>
+    <p>
+      Bot berjalan di atas platform Discord dan tunduk pada
+      <a href="https://discord.com/privacy" target="_blank" rel="noopener">Kebijakan Privasi Discord</a>.
+    </p>
+
+    <h2>8. Perubahan Kebijakan</h2>
+    <p>
+      Kebijakan Privasi ini dapat diperbarui sewaktu-waktu. Perubahan berlaku sejak dipublikasikan di
+      halaman ini.
+    </p>
+
+    <h2>9. Kontak</h2>
+    <p>Untuk pertanyaan atau permintaan terkait data, hubungi <strong>f0reest</strong> di Discord.</p>
+
+    <p style="margin-top:32px;"><a href="https://tosbastionbot.netlify.app/" target="_blank" rel="noopener">Lihat Terms of Service →</a></p>
+  </article>
+
+  <script>
+    (function(){var K="bastion-lang",r=document.documentElement;function a(l){r.classList.remove("lang-en","lang-id");r.classList.add("lang-"+l);r.setAttribute("lang",l);var b=document.querySelectorAll(".lang-switch button");for(var i=0;i<b.length;i++)b[i].classList.toggle("active",b[i].dataset.set===l);try{localStorage.setItem(K,l)}catch(e){}}var s="en";try{s=localStorage.getItem(K)||"en"}catch(e){}a(s);document.addEventListener("click",function(e){var b=e.target.closest?e.target.closest(".lang-switch button"):null;if(b&&b.dataset.set)a(b.dataset.set)})})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Bastion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0d0f15;--panel:#12151d;--surface-2:#1b2029;--text:#e8eaef;--muted:#8b92a2;--accent:#eaa13a;--border:#242a36;--display:'Anton',sans-serif;--head:'Oswald',sans-serif;--body:'Inter',sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.7;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:44px 44px}
+    code{background:#0d0f15;border:1px solid var(--border);padding:1px 8px;border-radius:5px;font-family:"SF Mono",Consolas,Monaco,monospace;font-size:14px;color:var(--accent)}
+    nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,15,21,.72);border-bottom:1px solid rgba(255,255,255,.04)}
+    .nav-inner{max-width:760px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:12px;font-family:var(--head);font-weight:700;letter-spacing:3px;font-size:18px}
+    .brand::before{content:"";width:4px;height:22px;background:var(--accent);display:inline-block}
+    .lang-switch{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+    .lang-switch button{background:transparent;border:none;color:var(--muted);font-family:var(--head);font-weight:600;font-size:13px;letter-spacing:1px;padding:6px 13px;cursor:pointer;transition:.15s}
+    .lang-switch button.active{background:var(--accent);color:#141821}
+    html.lang-en [data-lang="id"],html.lang-id [data-lang="en"]{display:none!important}
+    .legal{max-width:760px;margin:0 auto;padding:56px 20px}
+    .legal h1{font-family:var(--display);font-size:44px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+    .legal .updated{color:var(--muted);font-size:14px;margin-bottom:32px}
+    .legal h2{font-family:var(--head);font-weight:600;letter-spacing:.5px;font-size:21px;text-transform:uppercase;margin:34px 0 10px}
+    .legal p,.legal li{color:#cfd3dd}
+    .legal ul{padding-left:22px;margin:8px 0}
+    .legal li{margin-bottom:8px}
+    .legal a{color:var(--accent)}
+    .back-link{display:inline-block;margin-bottom:24px;color:var(--accent);text-decoration:none;font-weight:500}
+    .back-link:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">BASTION</div>
+      <div class="lang-switch">
+        <button data-set="id">ID</button>
+        <button data-set="en">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <article class="legal" data-lang="en">
+    <a class="back-link" href="https://bastiondiscordbot.netlify.app/">← Back</a>
+    <h1>Terms of Service</h1>
+    <p class="updated">Last updated: July 7, 2026</p>
+
+    <p>
+      By adding or using <strong>Bastion</strong> ("the Bot") in your Discord server, you agree to the
+      following Terms of Service. If you do not agree, please do not use the Bot.
+    </p>
+
+    <h2>1. Service Description</h2>
+    <p>
+      Bastion is a Discord moderation and logging bot providing anti-spam, anti-phishing, trap channel
+      (honeypot), and server activity logging (audit log) features.
+    </p>
+
+    <h2>2. Acceptable Use</h2>
+    <ul>
+      <li>You may not use the Bot to violate the <a href="https://discord.com/terms" target="_blank" rel="noopener">Discord Terms of Service</a> or any applicable law.</li>
+      <li>You are responsible for configuring the Bot in your server, including trap channel setup and permission settings.</li>
+      <li>You may not misuse the Bot to harass, target, or unlawfully disrupt users.</li>
+    </ul>
+
+    <h2>3. Permissions</h2>
+    <p>
+      The Bot requests elevated permissions (including managing channels, deleting messages, and kicking
+      members) so its moderation features can function. You may restrict these permissions through your
+      server's role settings, but some features may not work correctly if permissions are reduced.
+    </p>
+
+    <h2>4. Automated Actions</h2>
+    <p>
+      The Bot may automatically time out, kick, and delete messages based on its anti-spam, anti-phishing,
+      and trap channel rules. You understand and accept that these actions are automated and may affect
+      members in your server.
+    </p>
+
+    <h2>5. Service Availability</h2>
+    <p>
+      The Bot is provided "as is" without any warranty of availability or performance. We may modify,
+      suspend, or discontinue the service at any time without prior notice.
+    </p>
+
+    <h2>6. Limitation of Liability</h2>
+    <p>
+      To the extent permitted by law, we are not liable for any direct or indirect damages arising from
+      use of the Bot, including automated moderation errors, loss of message data, or mistaken actions
+      against members.
+    </p>
+
+    <h2>7. Changes to These Terms</h2>
+    <p>
+      We may update these Terms of Service at any time. Changes take effect once published on this page.
+      Continued use of the Bot means you accept the updated terms.
+    </p>
+
+    <h2>8. Contact</h2>
+    <p>For questions about these Terms of Service, contact <strong>f0reest</strong> on Discord.</p>
+
+    <p style="margin-top:32px;"><a href="https://privacyurlbastion.netlify.app/" target="_blank" rel="noopener">View Privacy Policy →</a></p>
+  </article>
+
+  <article class="legal" data-lang="id">
+    <a class="back-link" href="https://bastiondiscordbot.netlify.app/">← Kembali</a>
+    <h1>Terms of Service</h1>
+    <p class="updated">Terakhir diperbarui: 7 Juli 2026</p>
+
+    <p>
+      Dengan menambahkan atau menggunakan <strong>Bastion</strong> ("Bot") di server Discord Anda,
+      Anda menyetujui ketentuan layanan berikut. Jika Anda tidak setuju, mohon jangan gunakan Bot.
+    </p>
+
+    <h2>1. Deskripsi Layanan</h2>
+    <p>
+      Bastion adalah bot moderasi dan logging untuk Discord yang menyediakan fitur anti-spam,
+      anti-phishing, trap channel (honeypot), serta pencatatan aktivitas server (audit log).
+    </p>
+
+    <h2>2. Penggunaan yang Dapat Diterima</h2>
+    <ul>
+      <li>Anda tidak boleh menggunakan Bot untuk melanggar <a href="https://discord.com/terms" target="_blank" rel="noopener">Ketentuan Layanan Discord</a> atau hukum yang berlaku.</li>
+      <li>Anda bertanggung jawab atas konfigurasi Bot di server Anda, termasuk penetapan trap channel dan pengaturan permission.</li>
+      <li>Anda tidak boleh menyalahgunakan Bot untuk melecehkan, menargetkan, atau mengganggu pengguna secara tidak sah.</li>
+    </ul>
+
+    <h2>3. Permission</h2>
+    <p>
+      Bot meminta permission tingkat tinggi (termasuk kemampuan mengelola channel, menghapus pesan,
+      dan mengeluarkan/kick member) agar fitur moderasi berfungsi. Anda dapat membatasi permission ini
+      melalui pengaturan role di server Anda, namun beberapa fitur mungkin tidak berjalan sempurna
+      jika permission dikurangi.
+    </p>
+
+    <h2>4. Tindakan Otomatis</h2>
+    <p>
+      Bot dapat secara otomatis melakukan timeout, kick, dan penghapusan pesan berdasarkan aturan
+      anti-spam, anti-phishing, dan trap channel. Anda memahami dan menerima bahwa tindakan ini
+      bersifat otomatis dan dapat memengaruhi member di server Anda.
+    </p>
+
+    <h2>5. Ketersediaan Layanan</h2>
+    <p>
+      Bot disediakan "sebagaimana adanya" (as is) tanpa jaminan ketersediaan atau kinerja. Kami dapat
+      mengubah, menangguhkan, atau menghentikan layanan kapan saja tanpa pemberitahuan sebelumnya.
+    </p>
+
+    <h2>6. Batasan Tanggung Jawab</h2>
+    <p>
+      Sejauh diizinkan oleh hukum, kami tidak bertanggung jawab atas kerugian langsung maupun tidak
+      langsung yang timbul dari penggunaan Bot, termasuk kesalahan moderasi otomatis, kehilangan data
+      pesan, atau tindakan yang keliru terhadap member.
+    </p>
+
+    <h2>7. Perubahan Ketentuan</h2>
+    <p>
+      Kami dapat memperbarui Ketentuan Layanan ini sewaktu-waktu. Perubahan berlaku sejak dipublikasikan
+      di halaman ini. Penggunaan Bot yang berkelanjutan berarti Anda menerima ketentuan yang diperbarui.
+    </p>
+
+    <h2>8. Kontak</h2>
+    <p>Untuk pertanyaan mengenai Ketentuan Layanan ini, hubungi <strong>f0reest</strong> di Discord.</p>
+
+    <p style="margin-top:32px;"><a href="https://privacyurlbastion.netlify.app/" target="_blank" rel="noopener">Lihat Privacy Policy →</a></p>
+  </article>
+
+  <script>
+    (function(){var K="bastion-lang",r=document.documentElement;function a(l){r.classList.remove("lang-en","lang-id");r.classList.add("lang-"+l);r.setAttribute("lang",l);var b=document.querySelectorAll(".lang-switch button");for(var i=0;i<b.length;i++)b[i].classList.toggle("active",b[i].dataset.set===l);try{localStorage.setItem(K,l)}catch(e){}}var s="en";try{s=localStorage.getItem(K)||"en"}catch(e){}a(s);document.addEventListener("click",function(e){var b=e.target.closest?e.target.closest(".lang-switch button"):null;if(b&&b.dataset.set)a(b.dataset.set)})})();
+  </script>
+</body>
+</html>
