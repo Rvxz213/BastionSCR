@@ -1,6 +1,30 @@
 # BastionSCR
 A security bot for your discord server, and still need improvement for now the function works 😁💖
 
+<p align="center">
+
+<a href="https://discord.com/oauth2/authorize?client_id=1523973601097814150&permissions=8&integration_type=0&scope=bot+applications.commands">
+<img src="https://img.shields.io/badge/Invite_Discord_Bot-5865F2?style=for-the-badge&logo=discord&logoColor=white">
+</a>
+
+<a href="https://bastiondiscordbot.netlify.app/">
+<img src="https://img.shields.io/badge/Official_Website-0EA5E9?style=for-the-badge&logo=googlechrome&logoColor=white">
+</a>
+
+<a href="https://github.com/Rvxz213/BastionSecurityBot/releases">
+<img src="https://img.shields.io/badge/Latest_Release-success?style=for-the-badge&logo=github">
+</a>
+
+<a href="https://github.com/Rvxz213/BastionSecurityBot/issues">
+<img src="https://img.shields.io/badge/Issues-orange?style=for-the-badge&logo=github">
+</a>
+
+<a href="https://github.com/Rvxz213/BastionSecurityBot">
+<img src="https://img.shields.io/github/stars/USERNAME/BastionSecurityBot?style=for-the-badge">
+</a>
+
+</p>
+
 <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/14ab1719-5849-4378-850f-452981820703" />
 
 ````md
